@@ -19,6 +19,7 @@
                 }
                 if(this.password !== this.secondPassword){
                     alert('Las contraseñas no coinciden')
+                    return
                 }
                 
                 this.fetchData('registrar-usuario',{

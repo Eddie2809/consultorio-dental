@@ -40,6 +40,11 @@
                     return
                 }
 
+                if(this.motive === ''){
+                    alert('Ingresa el motivo de la cita')
+                    return
+                }
+
                 this.fetchData('crear-reservacion',{
                     horaInicio: dayObjStart.toISOString(),
                     horaFin: dayObjEnd.toISOString(),

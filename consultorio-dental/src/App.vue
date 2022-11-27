@@ -76,7 +76,7 @@
                 this.fetchGet('obtener-reservaciones-pendientes-totales').then(pendientes => {
                   this.fetchGet('obtener-usuarios').then(usuarios => {
                     this.pastReservations = canceladas.concat(finalizadas)
-                    this.reservations = reservaciones
+                    this.reservations = pendientes
                     this.cancelled = canceladas
                     this.users = usuarios
                     this.changeRoute('reservations')
