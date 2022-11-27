@@ -1,0 +1,34 @@
+.navbar
+    width: 100vw
+    height: 100px
+    background: linear-gradient(90deg, rgba(118, 165, 231, 1) 11.77%, rgba(76, 136, 200, 0.95) 39.27%, rgba(2, 84, 151, 1) 74.62%)
+    z-index: 100
+    display: flex
+    color: white
+    font-weight: bold
+    justify-content: space-between
+    align-items: center
+    position: fixed
+
+    img
+        height: 100%
+
+    .right
+        display: flex
+        height: 100%
+        align-items: center
+
+        .block
+            cursor: pointer
+            height: 100%
+            display: flex
+            align-items: center
+            user-select: none
+            padding-left: 20px
+            padding-right: 20px
+            
+            &:hover
+                background-color: rgba(0,0,0,0.1)
+
+        .selected
+            text-decoration: underline
