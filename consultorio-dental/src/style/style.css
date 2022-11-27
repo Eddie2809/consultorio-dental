@@ -584,6 +584,254 @@
   width: 27%;
 }
 
+.users {
+  position: relative;
+  top: 100px;
+  padding: 20px 30px 100px 30px;
+}
+
+.users .table {
+  margin-bottom: 30px;
+  font-size: 15px;
+  margin-top: 30px;
+}
+
+.users .table button {
+  padding: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.users .table .red {
+  background-color: #ff5252;
+}
+
+.users .table .green {
+  background-color: #6cc96c;
+}
+
+.users .table .names {
+  background-color: #236bab;
+  border-radius: 15px 15px 0 0;
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.users .table .row-values {
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.users .table .row-values:hover {
+  background-color: #eeeeee;
+}
+
+.users .table .id {
+  width: 5%;
+}
+
+.users .table .usuario {
+  width: 30%;
+}
+
+.users .table .correo {
+  width: 30%;
+}
+
+.users .table .telefono {
+  width: 10%;
+}
+
+.users .table .tipo {
+  width: 10%;
+}
+
+.users .table .cambiar-rol {
+  width: 15%;
+}
+
+.admincreatereservations {
+  position: relative;
+  top: 100px;
+  padding: 20px 30px 100px 30px;
+}
+
+.admincreatereservations img {
+  height: 150px;
+  width: 100vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  right: 30px;
+}
+
+.admincreatereservations h1 {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.admincreatereservations textarea {
+  resize: none;
+  margin-top: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid gray;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.admincreatereservations input {
+  width: 60px;
+}
+
+.admincreatereservations select {
+  margin-bottom: 20px;
+}
+
+.admincreatereservations div {
+  margin-bottom: 20px;
+}
+
+.admincreatereservations p {
+  margin-bottom: 5px;
+}
+
+.admincreatereservations button {
+  background-color: #236bab;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.reservations {
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 100px;
+  position: relative;
+  top: 100px;
+}
+
+.reservations img {
+  height: 150px;
+  width: 100vw;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: relative;
+  right: 30px;
+}
+
+.reservations h1 {
+  margin-top: 20px;
+}
+
+.reservations h2 {
+  margin-bottom: 20px;
+}
+
+.reservations .table {
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.reservations .table button {
+  padding: 5px;
+  background-color: #ff5252;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.reservations .table .names {
+  background-color: #236bab;
+  border-radius: 15px 15px 0 0;
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.reservations .table .row-values {
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 50px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.reservations .table .row-values:hover {
+  background-color: #eeeeee;
+}
+
+.reservations .table .id {
+  width: 8%;
+}
+
+.reservations .table .usuario {
+  width: 10%;
+}
+
+.reservations .table .fecha {
+  width: 15%;
+}
+
+.reservations .table .hora-inicio {
+  width: 9%;
+}
+
+.reservations .table .hora-fin {
+  width: 9%;
+}
+
+.reservations .table .motivo {
+  width: 34%;
+}
+
+.reservations .table .boton-cancelar {
+  width: 15%;
+}
+
 body {
   height: 100vh;
 }

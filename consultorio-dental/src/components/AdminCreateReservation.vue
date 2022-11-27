@@ -1,6 +1,6 @@
 <script>
     export default{
-        props: ['fetchData','user','changeRoute'],
+        props: ['fetchData','user','users'],
         data(){
             return {
                 motive: '',
@@ -10,7 +10,8 @@
                 hourStart: 0,
                 minutesStart: 0,
                 hourEnd: 0,
-                minutesEnd: 0
+                minutesEnd: 0,
+                userId: 0
             }
         },
         methods: {
@@ -44,7 +45,7 @@
                     horaInicio: dayObjStart.toISOString(),
                     horaFin: dayObjEnd.toISOString(),
                     motivoCreacion: this.motive,
-                    idCliente: this.user.id,
+                    idCliente: this.userId,
                     idCreador: this.user.id
                 })
                 .then(res => {
@@ -60,9 +61,14 @@
 </script>
 
 <template>
-    <div class="make-reservations">
+    <div class="admincreatereservations">
         <img src="../assets/banner.png" alt="banner">
         <h1>Hacer nueva reservación</h1>
+        <p>Usuario:</p>
+        <select v-model="this.userId" name="" id="">
+            <option value="0">--Selecciona un usuario--</option>
+            <option v-for="user in this.users" :value="user.id">{{user.nombre + ' ' + user.apellido}}</option>
+        </select>
         <p>Motivo: </p>
         <textarea v-model="this.motive" name="" id="" cols="30" rows="10"></textarea>
         <div class="fecha">
