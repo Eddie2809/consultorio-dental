@@ -679,7 +679,7 @@
 .admincreatereservations {
   position: relative;
   top: 100px;
-  padding: 20px 30px 100px 30px;
+  padding: 0 30px 100px 30px;
 }
 
 .admincreatereservations img {

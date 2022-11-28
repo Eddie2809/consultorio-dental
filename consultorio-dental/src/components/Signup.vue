@@ -54,12 +54,12 @@
                 <input v-model="this.lastname" type="text"><br>
             </div>
             <div>
-                <p>Correo</p><br>
-                <input v-model="this.email" type="text"><br>
-            </div>
-            <div>
                 <p>Telefono</p><br>
                 <input v-model="this.phone" type="text">
+            </div>
+            <div>
+                <p>Correo</p><br>
+                <input v-model="this.email" type="text"><br>
             </div>
             <div>
                 <p>Contraseña</p><br>

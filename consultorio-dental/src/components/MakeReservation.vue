@@ -61,6 +61,7 @@
 
                 if(minutes > 90 || minutes < 20){
                     alert('La cita tiene que durar entre 20 y 90 minutos')
+                    return
                 }
 
                 this.fetchData('crear-reservacion',{
@@ -71,11 +72,17 @@
                     idCreador: this.user.id
                 })
                 .then(res => {
-                    alert('Reservación creada con éxito')
-                    location.reload()
+                    if(res === 'Horario no disponible'){
+                        alert(res)
+                        return
+                    }
+                    else{
+                        alert('Tarea realizada con éxito')
+                        location.reload()
+                    }
                 })
                 .catch(err => {
-                    alert('Algo salió mal')
+                    alert(err)
                 })
             }
         }

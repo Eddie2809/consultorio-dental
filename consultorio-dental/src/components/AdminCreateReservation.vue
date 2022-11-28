@@ -36,6 +36,11 @@
                     return
                 }
 
+                if(this.userId === 0){
+                    alert('Seleccione un usuario')
+                    return
+                }
+
                 if(dayObjStart <= today || dayObjEnd <= today){
                     alert('Ingresa una fecha válida')
                     return
@@ -51,6 +56,12 @@
                     return
                 }
 
+                let minutes = ((dayObjEnd - dayObjStart) / 1000 / 60)
+                if(minutes > 90 || minutes < 20){
+                    alert('La cita tiene que durar entre 20 y 90 minutos')
+                    return
+                }
+
                 this.fetchData('crear-reservacion',{
                     horaInicio: dayObjStart.toISOString(),
                     horaFin: dayObjEnd.toISOString(),
@@ -59,11 +70,17 @@
                     idCreador: this.user.id
                 })
                 .then(res => {
-                    alert('Reservación creada con éxito')
-                    location.reload()
+                    if(res === 'Horario no disponible'){
+                        alert(res)
+                        return
+                    }
+                    else{
+                        alert('Tarea realizada con éxito')
+                        location.reload()
+                    }
                 })
                 .catch(err => {
-                    alert('Algo salió mal')
+                    alert(err)
                 })
             }
         }
