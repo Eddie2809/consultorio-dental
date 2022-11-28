@@ -13,6 +13,12 @@
                 this.fetchData('verificar-credenciales',{correo: this.email, contrasena: this.password}).then(res => {
                     if(res.length){
                         this.loadUser(res)
+                        this.fetchData('generar-sid',{userId: res[0].id}).then(sid => {
+                            let expiracion = new Date()
+                            expiracion.setTime(expiracion.getTime() + (1000*60*60*24*30))
+                            let nuevaCookie = 'SID=' + sid + ';expires=' + expiracion + ';'
+                            document.cookie = nuevaCookie
+                        })
                     }
                     else{
                         this.error = true

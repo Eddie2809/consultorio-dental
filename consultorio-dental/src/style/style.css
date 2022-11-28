@@ -11,7 +11,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-weigth: 900;
+  font-weight: 900;
 }
 
 .Login .card {
@@ -428,6 +428,10 @@
   width: 15%;
 }
 
+.my-reservations .table .motivo2 {
+  width: 22%;
+}
+
 .make-reservations {
   position: relative;
   top: 100px;
@@ -809,11 +813,12 @@
 }
 
 .reservations .table .usuario {
-  width: 10%;
+  width: 19%;
+  margin-right: 10px;
 }
 
 .reservations .table .fecha {
-  width: 15%;
+  width: 10%;
 }
 
 .reservations .table .hora-inicio {
@@ -830,6 +835,10 @@
 
 .reservations .table .boton-cancelar {
   width: 15%;
+}
+
+.reservations .table .motivo2 {
+  width: 20%;
 }
 
 body {

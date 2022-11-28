@@ -43,8 +43,8 @@
                 <div class="fecha"><p>Fecha</p></div>
                 <div class="hora-inicio"><p>Hora de inicio</p></div>
                 <div class="hora-fin"><p>Hora de fin</p></div>
-                <div class="motivo"><p>Motivo de cita</p></div>
-                <div class="motivo-cancelar"><p>Motivo de cancelación</p></div>
+                <div class="motivo2"><p>Motivo de cita</p></div>
+                <div class="motivo2"><p>Motivo de cancelación</p></div>
             </div>
             <div v-for="reservation in this.pastReservations" :class="'row-values' + (reservation.cancelada === true? '':' cancelado')">
                 <div class="id"><p>{{reservation.id}}</p></div>
@@ -52,8 +52,8 @@
                 <div class="fecha"><p>{{reservation.hora_inicio.substr(0,10)}}</p></div>
                 <div class="hora-inicio"><p>{{reservation.hora_inicio.substr(11,5)}}h</p></div>
                 <div class="hora-fin"><p>{{reservation.hora_fin.substr(11,5)}}h</p></div>
-                <div class="motivo"><p>{{reservation.motivo_creacion}}</p></div>
-                <div class="motivo-cancelar"><p>{{reservation.motivo_cancelacion}}</p></div>
+                <div class="motivo2"><p>{{reservation.motivo_creacion}}</p></div>
+                <div class="motivo2"><p>{{reservation.motivo_cancelacion}}</p></div>
             </div>
         </div>
     </div>

@@ -23,6 +23,9 @@
       Users,
       AdminCreateReservation
     },
+    beforeMount(){
+      this.searchCookies()
+    },
     data(){
       return{
         route: 'home',
@@ -54,6 +57,38 @@
           }).then(res => res.json())
           return resp
       },
+      getCookie(name){
+        let cookieArray = document.cookie.split(';')
+        name = name + '='
+        let cookieValue = ''
+
+        for(let i = 0; i < cookieArray.length; i++){
+          let cookie = cookieArray[i]
+
+          while(cookie.charAt(0) === ' '){
+            cookie = cookie.substring(1)
+          }
+          if(cookie.indexOf(name) === 0){
+            cookieValue = cookie.substring(name.length)
+          }
+        }
+        return cookieValue
+      },
+      searchCookies(){
+        let cookie = document.cookie
+        let sid,status
+        
+        if(cookie !== ''){
+          sid = this.getCookie('SID')
+
+          this.fetchData('restaurar-sesion',{SID: sid}).then(user => {
+            if(user === 'Algo salió mal'){
+              return
+            }
+            this.loadUser(user)
+          })
+        }
+      },
       changeRoute(newRoute){
           this.route = newRoute
       },
@@ -75,10 +110,32 @@
               this.fetchGet('obtener-reservaciones-finalizadas-totales').then(finalizadas => {
                 this.fetchGet('obtener-reservaciones-pendientes-totales').then(pendientes => {
                   this.fetchGet('obtener-usuarios').then(usuarios => {
-                    this.pastReservations = canceladas.concat(finalizadas)
+                    let pastReservations = canceladas.concat(finalizadas)
+                    pastReservations.map(res => {
+                      let nuevo_inicio = new Date(res.hora_inicio)
+                      let nuevo_fin = new Date(res.hora_fin)
+                      nuevo_inicio = new Date(nuevo_inicio - (1000*60*60*5))
+                      nuevo_fin = new Date(nuevo_fin - (1000*60*60*5))
+                      res.hora_inicio = nuevo_inicio.toISOString()
+                      res.hora_fin = nuevo_fin.toISOString()
+                      return res
+                    })
+
+                    pendientes.map(res => {
+                      let nuevo_inicio = new Date(res.hora_inicio)
+                      let nuevo_fin = new Date(res.hora_fin)
+                      nuevo_inicio = new Date(nuevo_inicio - (1000*60*60*5))
+                      nuevo_fin = new Date(nuevo_fin - (1000*60*60*5))
+                      res.hora_inicio = nuevo_inicio.toISOString()
+                      res.hora_fin = nuevo_fin.toISOString()
+                      return res
+                    })
+
+                    this.pastReservations = pastReservations
                     this.reservations = pendientes
                     this.cancelled = canceladas
                     this.users = usuarios
+
                     this.changeRoute('reservations')
                   })
                 })
@@ -90,11 +147,31 @@
           this.fetchData('obtener-reservaciones-pendientes',{idUsuario: this.user.id}).then(pendientes=> {
             this.fetchData('obtener-reservaciones-canceladas',{idUsuario: this.user.id}).then(canceladas => {
               this.fetchData('obtener-reservaciones-finalizadas',{idUsuario: this.user.id}).then(finalizadas => {
+                let pastReservations = canceladas.concat(finalizadas)
+                pastReservations.map(res => {
+                  let nuevo_inicio = new Date(res.hora_inicio)
+                  let nuevo_fin = new Date(res.hora_fin)
+                  nuevo_inicio = new Date(nuevo_inicio - (1000*60*60*5))
+                  nuevo_fin = new Date(nuevo_fin - (1000*60*60*5))
+                  res.hora_inicio = nuevo_inicio.toISOString()
+                  res.hora_fin = nuevo_fin.toISOString()
+                  return res
+                })
+
+                pendientes.map(res => {
+                  let nuevo_inicio = new Date(res.hora_inicio)
+                  let nuevo_fin = new Date(res.hora_fin)
+                  nuevo_inicio = new Date(nuevo_inicio - (1000*60*60*5))
+                  nuevo_fin = new Date(nuevo_fin - (1000*60*60*5))
+                  res.hora_inicio = nuevo_inicio.toISOString()
+                  res.hora_fin = nuevo_fin.toISOString()
+                  return res
+                })
+
                 this.reservations = pendientes
                 this.cancelled = canceladas
                 this.finished = finalizadas
-
-                this.pastReservations = this.cancelled.concat(this.finished)
+                this.pastReservations = pastReservations 
                 this.changeRoute('myreservations')
 
               })
@@ -111,8 +188,9 @@
         this.pastReservations = []
         this.activeReservation = {}
         this.admin = false
+        document.cookie = 'SID=;'
 
-        this.changeRoute('home')
+        location.reload()
       }
     }
   }
