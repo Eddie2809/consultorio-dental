@@ -2,9 +2,10 @@
     export default{
         data(){
             return{
-                email: 'eddiealejandrovargas@gmail.com',
-                password: 'admin123',
-                error: false
+                email: '',
+                password: '',
+                error: false,
+                remindme: false
             }
         },
         props: ['fetchData','fetchGet','changeRoute','loadUser'],
@@ -13,12 +14,15 @@
                 this.fetchData('verificar-credenciales',{correo: this.email, contrasena: this.password}).then(res => {
                     if(res.length){
                         this.loadUser(res)
-                        this.fetchData('generar-sid',{userId: res[0].id}).then(sid => {
-                            let expiracion = new Date()
-                            expiracion.setTime(expiracion.getTime() + (1000*60*60*24*30))
-                            let nuevaCookie = 'SID=' + sid + ';expires=' + expiracion + ';'
-                            document.cookie = nuevaCookie
-                        })
+
+                        if(this.remindme){
+                            this.fetchData('generar-sid',{userId: res[0].id}).then(sid => {
+                                let expiracion = new Date()
+                                expiracion.setTime(expiracion.getTime() + (1000*60*60*24*30))
+                                let nuevaCookie = 'SID=' + sid + ';expires=' + expiracion + ';'
+                                document.cookie = nuevaCookie
+                            })
+                        }
                     }
                     else{
                         this.error = true
@@ -26,7 +30,7 @@
                 })
             },
             alerta(){
-                alert('Ni modo:(')
+                alert('Contacte al administrador de la página')
             }
         }
     }
@@ -42,7 +46,7 @@
             <input v-model="password" class="text second-text" type="password" placeholder="Contraseña">
             <div class="lower-options">
                 <div class="left">
-                    <input type="checkbox" name="" id="">
+                    <input v-model="remindme" type="checkbox" name="" id="">
                     <p>Recordarme</p>
                 </div>
                 <p class="right pointer" @click="this.alerta">Olvidé mi contraseña</p>

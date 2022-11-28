@@ -774,6 +774,10 @@
   cursor: pointer;
 }
 
+.reservations .table .boton-finalizar button {
+  background-color: #6297d6;
+}
+
 .reservations .table .names {
   background-color: #236bab;
   border-radius: 15px 15px 0 0;
@@ -808,6 +812,14 @@
   background-color: #eeeeee;
 }
 
+.reservations .table .yellow {
+  background-color: #fff78c;
+}
+
+.reservations .table .yellow:hover {
+  background-color: #fff676;
+}
+
 .reservations .table .id {
   width: 8%;
 }
@@ -830,11 +842,15 @@
 }
 
 .reservations .table .motivo {
-  width: 34%;
+  width: 30%;
 }
 
 .reservations .table .boton-cancelar {
-  width: 15%;
+  width: 7%;
+}
+
+.reservations .table .boton-finalizar {
+  width: 8%;
 }
 
 .reservations .table .motivo2 {

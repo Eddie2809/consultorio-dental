@@ -207,7 +207,7 @@
       <MyReservations v-if="this.route === 'myreservations' && !this.admin" :changeRoute="changeRoute" :changeActiveReservation="changeActiveReservation" :pastReservations="pastReservations" :reservations="reservations" :finished="finished" :cancelled="cancelled" />
       <MakeReservation v-if="this.route === 'makereservation' && !this.admin" :changeRoute="changeRoute" :user="this.user" :fetchData="fetchData"/>
       <CancelReservation v-if="this.route === 'cancelreservation'" :fetchData="fetchData" :activeReservation="activeReservation" :changeRoute="changeRoute" />
-      <Reservations v-if="this.route === 'reservations' && this.admin" :changeRoute="changeRoute" :changeActiveReservation="changeActiveReservation" :pastReservations="pastReservations" :reservations="reservations" :finished="finished" :cancelled="cancelled" />
+      <Reservations v-if="this.route === 'reservations' && this.admin" :fetchData="fetchData" :changeRoute="changeRoute" :changeActiveReservation="changeActiveReservation" :pastReservations="pastReservations" :reservations="reservations" :finished="finished" :cancelled="cancelled" />
       <AdminCreateReservation v-if="this.admin && this.route==='admincreatereservations'" :fetchData="fetchData" :user="user" :users="users"/>
       <Users v-if="this.admin && this.route==='users'" :users="users" :fetchData="fetchData"/>
     </div>

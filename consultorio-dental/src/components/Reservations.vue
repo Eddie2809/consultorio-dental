@@ -1,10 +1,30 @@
 <script>
     export default{
-        props: ['reservations','finished','cancelled','pastReservations','changeRoute','changeActiveReservation'],
+        props: ['reservations','finished','cancelled','pastReservations','changeRoute','changeActiveReservation','fetchData'],
         methods: {
             cancelReservation(reservation){
                 this.changeActiveReservation(reservation)
                 this.changeRoute('cancelreservation')
+            },
+            finishReservation(reservation){
+                this.fetchData('finalizar-reservacion',{idReservacion: reservation.id}).then(res => {
+                    alert('Tarea realizada con éxito')
+                    location.reload()
+                })
+                .catch(err => {
+                    alert('Algo salió mal')
+                })
+            },
+            evaluateReservation(reservation){
+                let today = new Date()
+                let reservationDay = new Date(reservation.hora_fin)
+
+                if(today > reservationDay){
+                    return ' yellow'
+                }
+                else{
+                    return ''
+                }
             }
         }
     }
@@ -23,16 +43,17 @@
                 <div class="hora-inicio"><p>Hora de inicio</p></div>
                 <div class="hora-fin"><p>Hora de fin</p></div>
                 <div class="motivo"><p>Motivo</p></div>
-                <div class="boton-cancelar"><p>Cancelar</p></div>
+                <div class="boton-cancelar"><p>Opciones</p></div>
             </div>
-            <div v-for="reservation in this.reservations" class="row-values">
+            <div v-for="reservation in this.reservations" :class="'row-values' + this.evaluateReservation(reservation)">
                 <div class="id"><p class="id">{{reservation.id}}</p></div>
                 <div class="usuario"><p>{{reservation.nombre + ' ' + reservation.apellido}}</p></div>
                 <div class="fecha"><p class="fecha">{{reservation.hora_inicio.substr(0,10)}}</p></div>
                 <div class="hora-inicio"><p class="hora_inicio">{{reservation.hora_inicio.substr(11,5)}}h</p></div>
                 <div class="hora-fin"><p class="hora_fin">{{reservation.hora_fin.substr(11,5)}}h</p></div>
                 <div class="motivo"><p class="motivo_creacion">{{reservation.motivo_creacion}}</p></div>
-                <div class="boton-cancelar"><button @click="this.cancelReservation(reservation)">Cancelar reservación</button></div>
+                <div class="boton-finalizar"><button @click="this.finishReservation(reservation)">Finalizar</button></div>
+                <div class="boton-cancelar"><button @click="this.cancelReservation(reservation)">Cancelar</button></div>
             </div>
         </div>
         <h2>Reservaciones pasadas</h2>
